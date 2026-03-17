@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1080">
+<title>In Tech We Trust — Carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;0,8..60,900;1,8..60,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --red: #e23232;
+    --black: #1a1a1a;
+    --black-soft: rgba(26, 26, 26, 0.55);
+  }
+
+  body {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    background: var(--red);
+  }
+
+  .slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1080px;
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 100px;
+    text-align: center;
+    opacity: 0;
+    animation: cycle 12s ease-in-out infinite;
+    background: var(--red);
+  }
+
+  .slide:nth-child(1) { animation-delay: 0s; }
+  .slide:nth-child(2) { animation-delay: 3s; }
+  .slide:nth-child(3) { animation-delay: 6s; }
+  .slide:nth-child(4) { animation-delay: 9s; }
+
+  @keyframes cycle {
+    0%        { opacity: 0; transform: translateY(30px); }
+    3.3%      { opacity: 1; transform: translateY(0); }
+    22%       { opacity: 1; transform: translateY(0); }
+    25%       { opacity: 0; transform: translateY(-30px); }
+    100%      { opacity: 0; }
+  }
+
+  /* === SLIDE 1 — Hook === */
+  .slide-1 h1 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 900;
+    font-size: 80px;
+    color: var(--black);
+    line-height: 1.15;
+    max-width: 880px;
+  }
+
+  /* === SLIDE 2 — Twist === */
+  .slide-2 h2 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 76px;
+    color: var(--black);
+    line-height: 1.3;
+  }
+  .slide-2 .strike {
+    text-decoration: line-through;
+    text-decoration-color: var(--black);
+    text-decoration-thickness: 5px;
+    opacity: 0.45;
+  }
+
+  /* === SLIDE 3 — Reveal === */
+  .slide-3 h2 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 900;
+    font-size: 70px;
+    color: var(--black);
+    line-height: 1.2;
+    max-width: 900px;
+  }
+  .slide-3 p {
+    margin-top: 50px;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--black-soft);
+    max-width: 750px;
+    line-height: 1.5;
+  }
+
+  /* === SLIDE 4 — CTA === */
+  .slide-4 {
+    justify-content: center;
+    gap: 30px;
+  }
+  .slide-4 .hands {
+    height: 280px;
+    width: auto;
+  }
+  .slide-4 h1 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 900;
+    font-size: 96px;
+    color: var(--black);
+    line-height: 1.05;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .slide-4 .subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--black-soft);
+    line-height: 1.5;
+    max-width: 600px;
+  }
+  .slide-4 .authors {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 22px;
+    color: var(--black-soft);
+    letter-spacing: 1.5px;
+  }
+
+  /* Progress bar */
+  .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    background: var(--black);
+    opacity: 0.25;
+    animation: progress 12s linear infinite;
+  }
+  @keyframes progress {
+    0%   { width: 0%; }
+    100% { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="slide slide-1">
+    <h1>What's stopping us from governing AI?</h1>
+  </div>
+
+  <div class="slide slide-2">
+    <h2><span class="strike">Not bad policy.</span><br><span class="strike">Not bad tech.</span></h2>
+  </div>
+
+  <div class="slide slide-3">
+    <h2>It's a culture that worships technology like a god.</h2>
+    <p>And until that shifts, governance will keep failing.</p>
+  </div>
+
+  <div class="slide slide-4">
+    <img class="hands" src="hands.png" alt="Praying hands">
+    <h1>In Tech<br>We Trust.</h1>
+    <div class="subtitle">The god-like authority of technology in the modern age</div>
+    <div class="authors">Rufus Pollock &nbsp;|&nbsp; Rosie Bell &nbsp;|&nbsp; Sylvie Barbier</div>
+  </div>
+
+  <div class="progress"></div>
+
+</body>
+</html>
