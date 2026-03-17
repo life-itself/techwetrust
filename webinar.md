@@ -4,6 +4,31 @@ Intention:
 - Present the paper and have a recorded talk
 - Opportunity for discussion and sensemaking
 
+## Event description
+
+Join for us this roundtable where we will examine the issues raised by the new white paper "In Tech We Trust: Examining the god-like authority of technology in the modern age - and what it means to set a wiser course".
+
+Read In Tech We Trust paper here »
+
+This is also an opportunity to hear from the paper's authors as well as invited experts in AI and social transformation including Michael Garfield and Jenny Stefanotti.
+
+In Tech We Trust argues that technology has become more than a tool — it has become a cultural authority. In late modernity, tech is not simply something we use; it is something we trust, revere, and unconsciously organise our world around.
+
+This roundtable will cover questions like:
+
+- Has technology become a kind of modern “god”?
+- How do modern assumptions — individualism, rationalism, materialism, and the myth of progress — shape our relationship with AI?
+- What might it mean to shift from out-of-control technological acceleration towards collective restraint?
+- Can a worldview grounded in interbeing — the recognition of radical interdependence — support wiser choices about the forces we unleash?
+
+Rather than focusing only on governance, the discussion will examine the cultural paradigm shaping our technological era — and the inner capacities needed to navigate it well.
+
+Who should attend? Leaders, technologists, policymakers, educators, and anyone asking: What kind of humanity are we becoming in the age of AI?
+
+This webinar is an opportunity to engage directly with the authors and fellow participants in a rich, multi-perspective dialogue about technology, collective action, and the cultural transformation our time demands.
+
+Join us as we ask not only what AI can do — but who we must become to live well with it.
+
 ## Structure
 
 Total duration: ~90 minutes
