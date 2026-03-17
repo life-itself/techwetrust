@@ -8,7 +8,7 @@ Intention:
 
 Join for us this roundtable where we will examine the issues raised by the new white paper "In Tech We Trust: Examining the god-like authority of technology in the modern age - and what it means to set a wiser course".
 
-Read In Tech We Trust paper here »
+[Read In Tech We Trust paper here »](https://secondrenaissance.net/papers/tech)
 
 This is also an opportunity to hear from the paper's authors as well as invited experts in AI and social transformation including Michael Garfield and Jenny Stefanotti.
 
