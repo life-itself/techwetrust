@@ -41,6 +41,15 @@ Total duration: ~90 minutes
 - **1:00–1:25 — Return to main room** — open-floor questions to invited experts / panellists
 - **1:25–1:30 — Closing** — brief reflections on takeaways, next steps & actions
 
+### Breakout room question
+
+Recommendation: use one question only — with 10–15 min, two questions split the energy and neither lands properly. Go with Q1 for the breakout; Q2 could work as a prompt for the open-floor discussion or closing reflection.
+
+1. **"Where in your own life do you notice yourself relating to technology as if it were a kind of authority or god — trusting it, deferring to it, or feeling unable to say no? What would it take to pause?"**
+2. "What do you think it means to set a wiser course for technology development, and what examples of wise approaches to tech (if any) do you know of?"
+   - 2b. "What do you think a wise approach to technology would look like?"
+   - 2c. "What would it look like — in your community, work, or daily life — to make a technology decision from a place of interbeing rather than competition or convenience?"
+
 ### Notes / suggestions
 
 - The paper presentation could run ~20 min, leaving a buffer before discussants start.
