@@ -9,7 +9,7 @@ This essay explores our late modern relationship with technology, and asks what 
 - White Paper: paper.md
     - Published here https://secondrenaissance.net/papers/tech
     - Announcements are here: https://news.lifeitself.org/p/new-white-paper-in-tech-we-trust (but essentially identical to launch page).
-- Talk in 2024: TODO
+- Talk in 2024: https://docs.google.com/presentation/d/1llOM7hCN9cbWtAT1BNd0C73VEGKFvAX5eXK7L6UZB04/edit?slide=id.g3011f0d607d_0_10#slide=id.g3011f0d607d_0_10
 
 ### Abstract
 
