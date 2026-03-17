@@ -12,7 +12,7 @@ Join for us this roundtable where we will examine the issues raised by the new w
 
 This is also an opportunity to hear from the paper's authors as well as invited experts in AI and social transformation including Michael Garfield and Jenny Stefanotti.
 
-In Tech We Trust argues that technology has become more than a tool — it has become a cultural authority. In late modernity, tech is not simply something we use; it is something we trust, revere, and unconsciously organise our world around.
+[In Tech We Trust](https://secondrenaissance.net/papers/tech) argues that technology has become more than a tool — it has become a cultural authority. In late modernity, tech is not simply something we use; it is something we trust, revere, and unconsciously organise our world around.
 
 This roundtable will cover questions like:
 
