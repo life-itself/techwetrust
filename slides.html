@@ -293,7 +293,7 @@
         }
         .slide-title .slide-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 3fr 2fr;
             gap: var(--slide-padding);
             align-items: center;
             max-width: none;
@@ -306,24 +306,29 @@
         }
         .title-text h1 {
             font-family: var(--font-display);
-            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-size: clamp(3rem, 8vw, 7rem);
             font-weight: 900;
             line-height: 0.95;
             letter-spacing: -0.02em;
         }
         .title-text .subtitle {
             font-family: var(--font-quote);
-            font-size: clamp(0.8rem, 1.6vw, 1.2rem);
+            font-size: clamp(1rem, 2.2vw, 1.6rem);
             font-style: italic;
             line-height: 1.4;
             opacity: 0.85;
-            max-width: 400px;
+            max-width: 550px;
         }
-        .title-text .meta {
+        .title-text .authors {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        .title-text .date {
             font-family: var(--font-utility);
-            font-size: var(--small-size);
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
             opacity: 0.6;
-            margin-top: var(--element-gap);
         }
         .title-image {
             display: flex;
@@ -710,6 +715,30 @@
             color: var(--text-light);
         }
 
+        /* ===========================================
+           LOGO
+           Fixed bottom-right on all slides, larger on title
+           =========================================== */
+        a.logo-link {
+            position: absolute;
+            bottom: clamp(0.75rem, 1.5vw, 1.5rem);
+            right: clamp(0.75rem, 1.5vw, 1.5rem);
+            z-index: 2;
+            line-height: 0;
+            opacity: 0.7;
+        }
+        .slide-logo {
+            height: clamp(36px, 4.5vw, 60px);
+            width: auto;
+            position: static;
+        }
+        .slide-title a.logo-link {
+            opacity: 0.9;
+        }
+        .slide-title .slide-logo {
+            height: clamp(48px, 6vw, 80px);
+        }
+
         /* Keyboard hint — bottom center, fades away */
         .keyboard-hint {
             position: fixed;
@@ -748,12 +777,15 @@
             <div class="title-text">
                 <h1 class="reveal">In Tech<br>We Trust.</h1>
                 <p class="subtitle reveal">The god-like authority of technology in the modern age — and what it means to set a wiser course</p>
-                <p class="meta reveal">Rufus Pollock, Sylvie Barbier, and Rosie Bell<br>18 March 2026</p>
+                <p class="authors reveal">Rufus Pollock, Sylvie Barbier, and Rosie Bell</p>
+                <p class="date reveal">18 March 2026</p>
+                <a href="https://secondrenaissance.net" class="date reveal" style="opacity: 0.7; text-decoration: none; color: var(--text-light);">secondrenaissance.net</a>
             </div>
             <div class="title-image reveal-scale">
                 <img src="assets/tech-we-trust-cover.jpg" alt="In Tech We Trust — cover art showing praying hands">
             </div>
         </div>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -765,6 +797,7 @@
             <h2 class="section-title">The Wisdom Gap</h2>
         </div>
         <span class="slide-number">2</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -776,6 +809,7 @@
             <p class="slide-body reveal-slow" style="text-align:center; margin-top: var(--content-gap); color: var(--text-muted);">And the gap is accelerating.</p>
         </div>
         <span class="slide-number">3</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -790,12 +824,13 @@
                     <div class="attribution">— Hannah Arendt</div>
                 </div>
             </div>
-            <div class="image-col reveal-scale">
+            <div class="image-col reveal-scale" style="flex-direction: column;">
                 <img src="assets/slides/nagasaki.jpg" alt="Mushroom cloud over Nagasaki, August 1945">
                 <p style="font-family: var(--font-utility); font-size: var(--small-size); color: var(--text-muted); margin-top: 0.5rem; text-align: center;">The bombing of Nagasaki, 9 August 1945</p>
             </div>
         </div>
         <span class="slide-number">4</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -808,6 +843,7 @@
             <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">We're betting civilisation on faith in tech to fix what tech broke.</p>
         </div>
         <span class="slide-number">5</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -825,6 +861,7 @@
             </div>
         </div>
         <span class="slide-number">6</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -839,6 +876,7 @@
             </div>
         </div>
         <span class="slide-number">7</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -850,6 +888,7 @@
             <p class="slide-emphasis reveal-slow" style="margin-top: var(--content-gap); opacity: 0.7;">Each time the stakes get higher.</p>
         </div>
         <span class="slide-number">8</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -861,6 +900,7 @@
             <h2 class="section-title">Why Does This Keep Happening?</h2>
         </div>
         <span class="slide-number">9</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -872,6 +912,7 @@
             <p class="subsection-subtitle reveal">Technology: from servant to master</p>
         </div>
         <span class="slide-number">10</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -890,6 +931,7 @@
             </div>
         </div>
         <span class="slide-number">11</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -903,6 +945,7 @@
             <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">We don't question it — because the story says we're choosing freely.</p>
         </div>
         <span class="slide-number">12</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -919,6 +962,7 @@
             <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">Each fix creates the next crisis.</p>
         </div>
         <span class="slide-number">13</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -943,6 +987,7 @@
             </div>
         </div>
         <span class="slide-number">14</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -957,6 +1002,7 @@
             </div>
         </div>
         <span class="slide-number">15</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -970,6 +1016,7 @@
             <p class="slide-body reveal">We believe ourselves fully rational and fully agentic — and this belief blinds us to the ways technology distorts our agency.</p>
         </div>
         <span class="slide-number">16</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -981,6 +1028,7 @@
             <p class="subsection-subtitle reveal">We don't just fail to control technology — we actively <em>worship</em> it.</p>
         </div>
         <span class="slide-number">17</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1002,6 +1050,7 @@
             </div>
         </div>
         <span class="slide-number">18</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1013,6 +1062,7 @@
             <p class="slide-emphasis reveal-slow" style="margin-top: var(--content-gap);"><em>We're worshipping the horse.</em></p>
         </div>
         <span class="slide-number">19</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1024,6 +1074,7 @@
             <p class="subsection-subtitle reveal">The modern cultural paradigm</p>
         </div>
         <span class="slide-number">20</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1042,6 +1093,7 @@
             </ul>
         </div>
         <span class="slide-number">21</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1054,6 +1106,7 @@
             <p class="section-subtitle reveal">Why governance alone can't work</p>
         </div>
         <span class="slide-number">22</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1068,6 +1121,7 @@
             <p class="slide-emphasis reveal" style="margin-top: var(--element-gap);"><em>"We can't. If we pause, someone else won't."</em></p>
         </div>
         <span class="slide-number">23</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1081,6 +1135,7 @@
             </div>
         </div>
         <span class="slide-number">24</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1095,6 +1150,7 @@
             <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">But if enough people try to save themselves, the battle is lost and <em>everyone</em> dies.</p>
         </div>
         <span class="slide-number">25</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1106,6 +1162,7 @@
             <p class="slide-emphasis reveal-slow" style="margin-top: var(--content-gap);">The fort — at planetary scale.</p>
         </div>
         <span class="slide-number">26</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1117,6 +1174,7 @@
             <p class="subsection-subtitle reveal">A worldview of separateness</p>
         </div>
         <span class="slide-number">27</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1130,6 +1188,7 @@
             <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">Every attempt to fix tech governance <em>within</em> this paradigm reproduces the paradigm.</p>
         </div>
         <span class="slide-number">28</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1141,6 +1200,7 @@
             <p class="slide-body reveal">For over a thousand years, the <em>Subak</em> irrigation system in Bali has solved what should be an intractable collective action problem.</p>
         </div>
         <span class="slide-number">29</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1154,6 +1214,7 @@
             <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">The cooperation didn't come from rational incentive design. It came from <strong>shared meaning, shared identity, shared sense of belonging to something larger</strong>.</p>
         </div>
         <span class="slide-number">30</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1165,6 +1226,7 @@
             <h2 class="section-title">The Takeaway</h2>
         </div>
         <span class="slide-number">31</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1177,6 +1239,7 @@
             <p class="slide-emphasis reveal-slow" style="margin-top: var(--content-gap); font-weight: 700;">You can't fix a paradigm problem with paradigm tools.</p>
         </div>
         <span class="slide-number">32</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1189,6 +1252,7 @@
             <p class="section-subtitle reveal">Sketched</p>
         </div>
         <span class="slide-number">33</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1201,6 +1265,7 @@
             <p class="slide-body reveal" style="margin-top: var(--content-gap);">Imagine a moratorium: six months for philosophers, spiritual leaders, technologists, facilitators to ask together — <em>Do we want this? Do we want it now? How do we contain it?</em></p>
         </div>
         <span class="slide-number">34</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1213,6 +1278,7 @@
             <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">These aren't soft extras. They're essential capacities for wise choice-making that our rationalist culture has systematically sidelined.</p>
         </div>
         <span class="slide-number">35</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1235,6 +1301,7 @@
             </div>
         </div>
         <span class="slide-number">36</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1247,6 +1314,7 @@
             </div>
         </div>
         <span class="slide-number">37</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===================================================
@@ -1255,8 +1323,10 @@
     <section class="slide slide-image-bg" style="background-image: url('assets/slides/earthrise.jpg');" data-theme="dark">
         <div class="slide-content" style="align-items: center; text-align: center;">
             <h2 class="reveal-slow" style="font-family: var(--font-display); font-size: var(--subsection-title-size); font-weight: 600; line-height: 1.2; color: var(--text-light); max-width: min(70ch, 80vw);">A future society that survives will restore technology as servant to what is most human, most relational, and most conducive to life.</h2>
+            <a href="https://secondrenaissance.net" class="reveal-slow" style="font-family: var(--font-utility); font-size: var(--body-size); color: var(--text-light); opacity: 0.7; text-decoration: none; border-bottom: 1px solid rgba(245,240,230,0.3); margin-top: var(--content-gap);">secondrenaissance.net</a>
         </div>
         <span class="slide-number">38</span>
+            <a href="https://lifeitself.org" class="logo-link" target="_blank"><img src="assets/studio-logo-yellow.png" alt="Life Itself" class="slide-logo"></a>
     </section>
 
     <!-- ===========================================
