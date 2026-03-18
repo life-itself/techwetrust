@@ -133,13 +133,7 @@ Each fix creates the next crisis.
 
 <!-- IMAGE: Photograph of Thich Nhat Hanh. Serene, smiling, in brown robes. If a photograph of the actual Google visit (2013) can be found, use that. -->
 
-2013. Thich Nhat Hanh is invited to Google headquarters.
-
-The conversation turns to addictive apps.
-
----
-
-#### "A Mindfulness Bell"
+2013. Thich Nhat Hanh is invited to Google headquarters. The conversation turns to addictive apps.
 
 The Zen Master suggests:
 
@@ -171,13 +165,7 @@ We believe ourselves fully rational and fully agentic — and this belief blinds
 
 ### It's Worse Than That
 
-Tech as God
-
----
-
-#### We Don't Just Fail to Control Technology
-
-We actively *worship* it.
+We don't just fail to control technology — we actively *worship* it.
 
 ---
 
@@ -222,11 +210,9 @@ Why governance alone can't work
 
 ---
 
-#### "Can't We Just Regulate Better?"
-
----
-
 #### The Race to the Bottom
+
+*"Can't we just regulate better?"*
 
 *"Should we pause?"*
 
@@ -308,11 +294,7 @@ The cooperation didn't come from rational incentive design. It came from **share
 
 You cannot govern technology wisely without shifting the cultural paradigm that produces our dysfunctional relationship with it.
 
----
-
-#### The Paradigm Is the Problem
-
-The attempts to regulate, align, and govern technology — however well-intentioned — will keep failing as long as they operate within the worldview of separate, competing, rational individuals.
+The attempts to regulate, align, and govern technology will keep failing as long as they operate within the worldview of separate, competing, rational individuals.
 
 You can't fix a paradigm problem with paradigm tools.
 
@@ -350,15 +332,9 @@ Nothing exists in isolation. And this contains a simple, devastating insight:
 
 **Nobody wins a competition that ends in shared destruction.**
 
+When you perceive identity *with* each other and the world, there are no externalities. Collective action problems become dissoluble.
+
 <!-- IMAGE: A network or mycelium illustration — glowing nodes connected by fine threads, suggesting interconnection. Or: the famous "Earthrise" photograph from Apollo 8. -->
-
----
-
-#### When You Perceive Interbeing
-
-When you perceive identity *with* each other and the world, there are no externalities.
-
-Collective action problems become dissoluble.
 
 ---
 
