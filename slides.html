@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>In Tech We Trust — Presentation</title>
 
-    <!-- Fonts: Bodoni Moda for display, Cormorant Garamond for quotes, DM Sans for body -->
+    <!-- Fonts: Cormorant Garamond for display/body/quotes, DM Sans for utility text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
         /* ===========================================
@@ -30,17 +30,18 @@
             --gold: #b8a07a;
 
             /* Typography — all clamp() */
-            --font-display: 'Bodoni Moda', serif;
+            --font-display: 'Cormorant Garamond', serif;
             --font-quote: 'Cormorant Garamond', serif;
-            --font-body: 'DM Sans', sans-serif;
+            --font-body: 'Cormorant Garamond', serif;
+            --font-utility: 'DM Sans', sans-serif;
             --title-size: clamp(2rem, 6vw, 5rem);
             --section-title-size: clamp(2rem, 7vw, 5.5rem);
             --subsection-title-size: clamp(1.5rem, 4.5vw, 3.5rem);
             --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
             --h3-size: clamp(1rem, 2.5vw, 1.75rem);
-            --body-size: clamp(0.8rem, 1.5vw, 1.2rem);
+            --body-size: clamp(0.85rem, 1.7vw, 1.35rem);
             --small-size: clamp(0.65rem, 1vw, 0.875rem);
-            --quote-size: clamp(0.9rem, 1.8vw, 1.4rem);
+            --quote-size: clamp(0.95rem, 2vw, 1.5rem);
 
             /* Spacing */
             --slide-padding: clamp(1.5rem, 5vw, 5rem);
@@ -230,7 +231,7 @@
             text-align: center;
         }
         .slide-section .section-number {
-            font-family: var(--font-display);
+            font-family: var(--font-utility);
             font-size: var(--small-size);
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -245,7 +246,7 @@
             max-width: min(80vw, 700px);
         }
         .slide-section .section-subtitle {
-            font-family: var(--font-body);
+            font-family: var(--font-utility);
             font-size: var(--body-size);
             font-weight: 400;
             opacity: 0.8;
@@ -270,7 +271,7 @@
             max-width: min(80vw, 700px);
         }
         .slide-subsection .subsection-subtitle {
-            font-family: var(--font-body);
+            font-family: var(--font-utility);
             font-size: var(--body-size);
             opacity: 0.6;
             margin-top: var(--element-gap);
@@ -319,7 +320,7 @@
             max-width: 400px;
         }
         .title-text .meta {
-            font-family: var(--font-body);
+            font-family: var(--font-utility);
             font-size: var(--small-size);
             opacity: 0.6;
             margin-top: var(--element-gap);
@@ -420,7 +421,7 @@
             color: var(--charcoal);
         }
         .slide-quote .attribution {
-            font-family: var(--font-body);
+            font-family: var(--font-utility);
             font-size: var(--small-size);
             font-style: normal;
             color: var(--text-muted);
@@ -501,7 +502,7 @@
             color: var(--charcoal);
         }
         .dialogue-label {
-            font-family: var(--font-body);
+            font-family: var(--font-utility);
             font-size: var(--small-size);
             font-weight: 700;
             text-transform: uppercase;
@@ -550,7 +551,7 @@
             position: absolute;
             bottom: clamp(0.75rem, 1.5vw, 1.5rem);
             left: clamp(1rem, 2vw, 2rem);
-            font-family: var(--font-body);
+            font-family: var(--font-utility);
             font-size: var(--small-size);
             color: var(--text-muted);
             opacity: 0.5;
@@ -641,7 +642,7 @@
             bottom: clamp(0.5rem, 1.5vw, 1.5rem);
             left: 50%;
             transform: translateX(-50%);
-            font-family: var(--font-body);
+            font-family: var(--font-utility);
             font-size: var(--small-size);
             color: var(--text-light);
             opacity: 0.4;
