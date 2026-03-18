@@ -636,6 +636,80 @@
             transform: scale(1);
         }
 
+        /* ===========================================
+           IMAGE SLIDES
+           Content + image side by side, or image as background
+           =========================================== */
+        .slide-with-image .slide-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--slide-padding);
+            align-items: center;
+            max-width: none;
+            margin: 0;
+        }
+        .slide-with-image .text-col {
+            display: flex;
+            flex-direction: column;
+            gap: var(--element-gap);
+        }
+        .slide-with-image .image-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .slide-with-image .image-col img {
+            max-height: min(70vh, 500px);
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        @media (max-width: 768px) {
+            .slide-with-image .slide-content {
+                grid-template-columns: 1fr;
+            }
+            .slide-with-image .image-col {
+                display: none;
+            }
+        }
+
+        /* Full-bleed background image slide */
+        .slide-image-bg {
+            background-size: cover;
+            background-position: center;
+        }
+        .slide-image-bg .slide-content {
+            position: relative;
+            z-index: 1;
+        }
+        .slide-image-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 26, 26, 0.55);
+            z-index: 0;
+        }
+        .slide-image-bg .slide-heading,
+        .slide-image-bg .slide-body,
+        .slide-image-bg .slide-emphasis,
+        .slide-image-bg .slide-quote p,
+        .slide-image-bg .slide-quote .attribution {
+            color: var(--text-light);
+        }
+        .slide-image-bg .slide-emphasis em {
+            color: var(--cream);
+        }
+        .slide-image-bg .slide-heading::after {
+            background: var(--text-light);
+            opacity: 0.4;
+        }
+        .slide-image-bg .slide-number {
+            color: var(--text-light);
+        }
+
         /* Keyboard hint — bottom center, fades away */
         .keyboard-hint {
             position: fixed;
@@ -707,12 +781,18 @@
     <!-- ===================================================
          SLIDE 4: The Bomb
          =================================================== -->
-    <section class="slide slide-content-type slide-quote-centered">
+    <section class="slide slide-content-type slide-with-image">
         <div class="slide-content">
-            <h3 class="slide-heading reveal" style="text-align:center;">The Bomb</h3>
-            <div class="slide-quote reveal-slow">
-                <p>"Physicists split the atom without any hesitations the very moment they knew how to do it."</p>
-                <div class="attribution">— Hannah Arendt</div>
+            <div class="text-col">
+                <h3 class="slide-heading reveal">The Bomb</h3>
+                <div class="slide-quote reveal-slow">
+                    <p>"Physicists split the atom without any hesitations the very moment they knew how to do it."</p>
+                    <div class="attribution">— Hannah Arendt</div>
+                </div>
+            </div>
+            <div class="image-col reveal-scale">
+                <img src="assets/slides/nagasaki.jpg" alt="Mushroom cloud over Nagasaki, August 1945">
+                <p style="font-family: var(--font-utility); font-size: var(--small-size); color: var(--text-muted); margin-top: 0.5rem; text-align: center;">The bombing of Nagasaki, 9 August 1945</p>
             </div>
         </div>
         <span class="slide-number">4</span>
@@ -721,7 +801,7 @@
     <!-- ===================================================
          SLIDE 5: The Climate Bet
          =================================================== -->
-    <section class="slide slide-content-type">
+    <section class="slide slide-content-type slide-image-bg" style="background-image: url('assets/slides/wildfire.jpg');" data-theme="dark">
         <div class="slide-content">
             <h3 class="slide-heading reveal">The Climate Bet</h3>
             <p class="slide-body reveal">At the highest levels of climate policy, our plans increasingly rely on <em>future technological breakthroughs</em> that don't exist yet.</p>
@@ -733,11 +813,16 @@
     <!-- ===================================================
          SLIDE 6: The Experiment on Our Children
          =================================================== -->
-    <section class="slide slide-content-type">
+    <section class="slide slide-content-type slide-with-image">
         <div class="slide-content">
-            <h3 class="slide-heading reveal">The Experiment on Our Children</h3>
-            <p class="slide-body reveal">We handed addictive technology to entire populations of children.</p>
-            <p class="slide-body reveal">No experts in the effects on youth mental health existed to consult — because the technology arrived before the expertise.</p>
+            <div class="text-col">
+                <h3 class="slide-heading reveal">The Experiment on Our Children</h3>
+                <p class="slide-body reveal">We handed addictive technology to entire populations of children.</p>
+                <p class="slide-body reveal">No experts in the effects on youth mental health existed to consult — because the technology arrived before the expertise.</p>
+            </div>
+            <div class="image-col reveal-scale">
+                <img src="assets/slides/phone-night.jpg" alt="Person reading on a phone in the dark">
+            </div>
         </div>
         <span class="slide-number">6</span>
     </section>
@@ -792,11 +877,16 @@
     <!-- ===================================================
          SLIDE 11: The Horse — TNH quote
          =================================================== -->
-    <section class="slide slide-content-type slide-quote-centered">
+    <section class="slide slide-content-type slide-with-image">
         <div class="slide-content">
-            <div class="slide-quote reveal-slow">
-                <p>"A person is sitting on a horse, galloping very quickly. At a crossroads, a friend shouts, 'Where are you going?' The man says, 'I don't know, ask the horse!'"</p>
-                <div class="attribution">— Thich Nhat Hanh</div>
+            <div class="text-col">
+                <div class="slide-quote reveal-slow">
+                    <p>"A person is sitting on a horse, galloping very quickly. At a crossroads, a friend shouts, 'Where are you going?' The man says, 'I don't know, ask the horse!'"</p>
+                    <div class="attribution">— Thich Nhat Hanh</div>
+                </div>
+            </div>
+            <div class="image-col reveal-scale">
+                <img src="assets/slides/galloping-horse-fen-zeng.webp" alt="Ink-brush painting of a figure galloping on a horse, by Fen Zeng">
             </div>
         </div>
         <span class="slide-number">11</span>
@@ -834,17 +924,22 @@
     <!-- ===================================================
          SLIDE 14: The Zen Master Visits Google
          =================================================== -->
-    <section class="slide slide-content-type">
+    <section class="slide slide-content-type slide-with-image">
         <div class="slide-content">
-            <h3 class="slide-heading reveal">The Zen Master Visits Google</h3>
-            <p class="slide-body reveal">2013. Thich Nhat Hanh is invited to Google headquarters. The conversation turns to addictive apps.</p>
-            <div class="dialogue-block reveal">
-                <p class="dialogue-label">The Zen Master suggests:</p>
-                <p class="dialogue">"Mobile phones could easily have a mindfulness bell — a sound every quarter hour to interrupt the addictive pattern and recall people to themselves."</p>
+            <div class="text-col">
+                <h3 class="slide-heading reveal">The Zen Master Visits Google</h3>
+                <p class="slide-body reveal">2013. Thich Nhat Hanh is invited to Google headquarters. The conversation turns to addictive apps.</p>
+                <div class="dialogue-block reveal">
+                    <p class="dialogue-label">The Zen Master suggests:</p>
+                    <p class="dialogue">"Mobile phones could easily have a mindfulness bell — a sound every quarter hour to interrupt the addictive pattern and recall people to themselves."</p>
+                </div>
+                <div class="dialogue-block reveal">
+                    <p class="dialogue-label">The engineer objects:</p>
+                    <p class="dialogue">"But wouldn't we be imposing something people don't need?"</p>
+                </div>
             </div>
-            <div class="dialogue-block reveal">
-                <p class="dialogue-label">The engineer objects:</p>
-                <p class="dialogue">"But wouldn't we be imposing something people don't need?"</p>
+            <div class="image-col reveal-scale">
+                <img src="assets/slides/thich-nhat-hanh.jpg" alt="Portrait of Thich Nhat Hanh">
             </div>
         </div>
         <span class="slide-number">14</span>
@@ -891,15 +986,20 @@
     <!-- ===================================================
          SLIDE 18: Technology as Surrogate God
          =================================================== -->
-    <section class="slide slide-content-type">
+    <section class="slide slide-content-type slide-with-image">
         <div class="slide-content">
-            <h3 class="slide-heading reveal">Technology as Surrogate God</h3>
-            <ul class="slide-list">
-                <li><strong>Mystery and awe:</strong> "There's no discernible difference between the internet and an omniscient being. I don't ask how it works. I just switch it on and trust."</li>
-                <li><strong>Salvation:</strong> cryopreservation, transhumanism — ideas that evolved "from crackpot to merely eccentric"</li>
-                <li><strong>High priests:</strong> tech founders as the most famous, most powerful people in the world — their opinion thought relevant in every matter</li>
-                <li><strong>Blind faith in crisis:</strong> facing existential climate breakdown, our best policy plans assume <em>more</em> tech will save us from tech</li>
-            </ul>
+            <div class="text-col">
+                <h3 class="slide-heading reveal">Technology as Surrogate God</h3>
+                <ul class="slide-list">
+                    <li><strong>Mystery and awe:</strong> "There's no discernible difference between the internet and an omniscient being. I don't ask how it works. I just switch it on and trust."</li>
+                    <li><strong>Salvation:</strong> cryopreservation, transhumanism — ideas that evolved "from crackpot to merely eccentric"</li>
+                    <li><strong>High priests:</strong> tech founders as the most famous, most powerful people in the world — their opinion thought relevant in every matter</li>
+                    <li><strong>Blind faith in crisis:</strong> facing existential climate breakdown, our best policy plans assume <em>more</em> tech will save us from tech</li>
+                </ul>
+            </div>
+            <div class="image-col reveal-scale">
+                <img src="sharing/carousel/hands.png" alt="Praying hands — technology as object of worship" style="max-height: min(50vh, 350px);">
+            </div>
         </div>
         <span class="slide-number">18</span>
     </section>
@@ -986,7 +1086,7 @@
     <!-- ===================================================
          SLIDE 25: The Fort
          =================================================== -->
-    <section class="slide slide-content-type">
+    <section class="slide slide-content-type slide-image-bg" style="background-image: url('assets/slides/medieval-castle.jpg');" data-theme="dark">
         <div class="slide-content">
             <h3 class="slide-heading reveal">The Fort</h3>
             <p class="slide-body reveal">Imagine defending a fort together.</p>
@@ -1035,7 +1135,7 @@
     <!-- ===================================================
          SLIDE 29: The Balinese Water Temples
          =================================================== -->
-    <section class="slide slide-content-type">
+    <section class="slide slide-content-type slide-image-bg" style="background-image: url('assets/slides/bali-rice-terraces.jpg');" data-theme="dark">
         <div class="slide-content">
             <h3 class="slide-heading reveal">The Balinese Water Temples</h3>
             <p class="slide-body reveal">For over a thousand years, the <em>Subak</em> irrigation system in Bali has solved what should be an intractable collective action problem.</p>
@@ -1118,16 +1218,21 @@
     <!-- ===================================================
          SLIDE 36: Interbeing
          =================================================== -->
-    <section class="slide slide-content-type">
+    <section class="slide slide-content-type slide-with-image">
         <div class="slide-content">
-            <h3 class="slide-heading reveal">Interbeing</h3>
-            <div class="slide-quote reveal">
-                <p>"To be is always to inter-be."</p>
-                <div class="attribution">— Thich Nhat Hanh</div>
+            <div class="text-col">
+                <h3 class="slide-heading reveal">Interbeing</h3>
+                <div class="slide-quote reveal">
+                    <p>"To be is always to inter-be."</p>
+                    <div class="attribution">— Thich Nhat Hanh</div>
+                </div>
+                <p class="slide-body reveal" style="margin-top: var(--content-gap);">Nothing exists in isolation. And this contains a simple, devastating insight:</p>
+                <p class="slide-emphasis reveal" style="margin-top: var(--element-gap);"><strong>Nobody wins a competition that ends in shared destruction.</strong></p>
+                <p class="slide-body reveal" style="margin-top: var(--element-gap);">When you perceive identity <em>with</em> each other and the world, there are no externalities. Collective action problems become dissoluble.</p>
             </div>
-            <p class="slide-body reveal" style="margin-top: var(--content-gap);">Nothing exists in isolation. And this contains a simple, devastating insight:</p>
-            <p class="slide-emphasis reveal" style="margin-top: var(--element-gap);"><strong>Nobody wins a competition that ends in shared destruction.</strong></p>
-            <p class="slide-body reveal" style="margin-top: var(--element-gap);">When you perceive identity <em>with</em> each other and the world, there are no externalities. Collective action problems become dissoluble.</p>
+            <div class="image-col reveal-scale">
+                <img src="assets/slides/mycelium.jpg" alt="Cyanotype print of branching network, evoking interconnection">
+            </div>
         </div>
         <span class="slide-number">36</span>
     </section>
@@ -1147,9 +1252,9 @@
     <!-- ===================================================
          SLIDE 38: A Future That Survives (closing)
          =================================================== -->
-    <section class="slide slide-section" data-theme="dark">
-        <div class="slide-content">
-            <h2 class="section-title" style="font-size: var(--subsection-title-size);">A future society that survives will restore technology as servant to what is most human, most relational, and most conducive to life.</h2>
+    <section class="slide slide-image-bg" style="background-image: url('assets/slides/earthrise.jpg');" data-theme="dark">
+        <div class="slide-content" style="align-items: center; text-align: center;">
+            <h2 class="reveal-slow" style="font-family: var(--font-display); font-size: var(--subsection-title-size); font-weight: 600; line-height: 1.2; color: var(--text-light); max-width: min(70ch, 80vw);">A future society that survives will restore technology as servant to what is most human, most relational, and most conducive to life.</h2>
         </div>
         <span class="slide-number">38</span>
     </section>
