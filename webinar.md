@@ -36,7 +36,7 @@ Total duration: ~90 minutes
 - **0:00–0:05 — Arrival & settling in** — music or holding slide as people join
 - **0:05–0:10 — Opening & grounding** — short grounding practice led by Sylvie (~3–5 min)
 - **0:10–0:35 — Paper presentation** (~20–25 min)
-- **0:35–0:50 — Discussant responses** — each panellist speaks for 3–5 min
+- **0:35–0:50 — Discussant responses** — each panellist speaks for 3–5 min **Jenny, Michael, Sylvie**   
 - **0:50–1:00 — Breakout rooms** — small-group discussion (~10 min, with facilitator)
 - **1:00–1:25 — Return to main room** — open-floor questions to invited experts / panellists
 - **1:25–1:30 — Closing** — brief reflections on takeaways, next steps & actions
