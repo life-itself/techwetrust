@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Tech We Trust — Presentation</title>
+
+    <!-- Fonts: Bodoni Moda for display, Cormorant Garamond for quotes, DM Sans for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES (THEME)
+           Inspired by the In Tech We Trust cover (bold red + black serif)
+           and Second Renaissance papers page (warm cream + editorial elegance)
+           =========================================== */
+        :root {
+            /* Colors */
+            --red: #c43b2e;
+            --red-dark: #a32f24;
+            --cream: #f5f0e6;
+            --cream-dark: #ebe4d6;
+            --charcoal: #1a1a1a;
+            --charcoal-light: #2d2d2d;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f0e6;
+            --text-muted: #7a7468;
+            --gold: #b8a07a;
+
+            /* Typography — all clamp() */
+            --font-display: 'Bodoni Moda', serif;
+            --font-quote: 'Cormorant Garamond', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --title-size: clamp(2rem, 6vw, 5rem);
+            --section-title-size: clamp(2rem, 7vw, 5.5rem);
+            --subsection-title-size: clamp(1.5rem, 4.5vw, 3.5rem);
+            --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+            --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+            --body-size: clamp(0.8rem, 1.5vw, 1.2rem);
+            --small-size: clamp(0.65rem, 1vw, 0.875rem);
+            --quote-size: clamp(0.9rem, 1.8vw, 1.4rem);
+
+            /* Spacing */
+            --slide-padding: clamp(1.5rem, 5vw, 5rem);
+            --content-gap: clamp(0.75rem, 2vw, 2rem);
+            --element-gap: clamp(0.25rem, 1vw, 1rem);
+
+            /* Animation */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-normal: 0.7s;
+            --duration-slow: 1s;
+        }
+
+        /* ===========================================
+           BASE STYLES
+           =========================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* === VIEWPORT BASE STYLES (MANDATORY) === */
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 100%;
+            overflow: hidden;
+            padding: var(--slide-padding);
+        }
+        .card, .container, .content-box {
+            max-width: min(90vw, 1000px);
+            max-height: min(80vh, 700px);
+        }
+        .feature-list, .bullet-list {
+            gap: clamp(0.4rem, 1vh, 1rem);
+        }
+        .feature-list li, .bullet-list li {
+            font-size: var(--body-size);
+            line-height: 1.4;
+        }
+        img, .image-container {
+            max-width: 100%;
+            max-height: min(50vh, 400px);
+            object-fit: contain;
+        }
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(0.75rem, 3vw, 2rem);
+                --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+                --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+                --h2-size: clamp(1rem, 3vw, 1.75rem);
+                --section-title-size: clamp(1.5rem, 5.5vw, 3.5rem);
+                --subsection-title-size: clamp(1.25rem, 3.5vw, 2.5rem);
+            }
+        }
+        @media (max-height: 600px) {
+            :root {
+                --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+                --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+                --title-size: clamp(1.1rem, 4vw, 2rem);
+                --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+            }
+            .nav-dots, .keyboard-hint, .decorative {
+                display: none;
+            }
+        }
+        @media (max-height: 500px) {
+            :root {
+                --slide-padding: clamp(0.4rem, 2vw, 1rem);
+                --title-size: clamp(1rem, 3.5vw, 1.5rem);
+                --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+                --body-size: clamp(0.65rem, 1vw, 0.85rem);
+            }
+        }
+        @media (max-width: 600px) {
+            :root {
+                --title-size: clamp(1.25rem, 7vw, 2.5rem);
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+        /* === END VIEWPORT BASE === */
+
+        /* ===========================================
+           GLOBAL TYPOGRAPHY
+           =========================================== */
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background: var(--charcoal);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===========================================
+           PROGRESS BAR
+           Thin red line at top of viewport
+           =========================================== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--red);
+            z-index: 1000;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* ===========================================
+           NAVIGATION DOTS
+           Right side, vertical, subtle
+           =========================================== */
+        .nav-dots {
+            position: fixed;
+            right: clamp(0.75rem, 1.5vw, 1.5rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(4px, 0.5vh, 8px);
+            z-index: 100;
+        }
+        .nav-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+        .nav-dot.active {
+            opacity: 1;
+            background: var(--red);
+            transform: scale(1.5);
+        }
+        /* Dots on red/dark slides need to be visible */
+        .nav-dot.on-dark {
+            background: var(--cream);
+        }
+
+        /* ===========================================
+           SLIDE TYPES
+           =========================================== */
+
+        /* --- Content slides: warm cream background --- */
+        .slide-content-type {
+            background: var(--cream);
+        }
+        .slide-content-type .slide-content {
+            max-width: min(90vw, 900px);
+            margin: 0 auto;
+        }
+
+        /* --- Section divider slides: bold red --- */
+        .slide-section {
+            background: var(--red);
+            color: var(--text-light);
+        }
+        .slide-section .slide-content {
+            align-items: center;
+            text-align: center;
+        }
+        .slide-section .section-number {
+            font-family: var(--font-display);
+            font-size: var(--small-size);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.6;
+            margin-bottom: var(--element-gap);
+        }
+        .slide-section .section-title {
+            font-family: var(--font-display);
+            font-size: var(--section-title-size);
+            font-weight: 900;
+            line-height: 1.05;
+            max-width: min(80vw, 700px);
+        }
+        .slide-section .section-subtitle {
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            font-weight: 400;
+            opacity: 0.8;
+            margin-top: var(--element-gap);
+            font-style: italic;
+        }
+
+        /* --- Subsection divider slides: dark charcoal --- */
+        .slide-subsection {
+            background: var(--charcoal);
+            color: var(--text-light);
+        }
+        .slide-subsection .slide-content {
+            align-items: center;
+            text-align: center;
+        }
+        .slide-subsection .subsection-title {
+            font-family: var(--font-display);
+            font-size: var(--subsection-title-size);
+            font-weight: 700;
+            line-height: 1.1;
+            max-width: min(80vw, 700px);
+        }
+        .slide-subsection .subsection-subtitle {
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            opacity: 0.6;
+            margin-top: var(--element-gap);
+        }
+        /* Red accent line under subsection title */
+        .slide-subsection .subsection-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--red);
+            margin: var(--content-gap) auto 0;
+        }
+
+        /* --- Title slide --- */
+        .slide-title {
+            background: var(--red);
+            color: var(--text-light);
+        }
+        .slide-title .slide-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--slide-padding);
+            align-items: center;
+            max-width: none;
+            margin: 0;
+        }
+        .title-text {
+            display: flex;
+            flex-direction: column;
+            gap: var(--content-gap);
+        }
+        .title-text h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+        }
+        .title-text .subtitle {
+            font-family: var(--font-quote);
+            font-size: clamp(0.8rem, 1.6vw, 1.2rem);
+            font-style: italic;
+            line-height: 1.4;
+            opacity: 0.85;
+            max-width: 400px;
+        }
+        .title-text .meta {
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            opacity: 0.6;
+            margin-top: var(--element-gap);
+        }
+        .title-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .title-image img {
+            max-height: min(70vh, 500px);
+            width: auto;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        @media (max-width: 768px) {
+            .slide-title .slide-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .title-image {
+                display: none;
+            }
+        }
+
+        /* ===========================================
+           CONTENT SLIDE ELEMENTS
+           =========================================== */
+
+        /* Slide titles */
+        .slide-heading {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--charcoal);
+            margin-bottom: var(--content-gap);
+        }
+        /* Red thin rule under content headings */
+        .slide-heading::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--red);
+            margin-top: clamp(0.3rem, 0.8vw, 0.6rem);
+        }
+
+        /* Body text */
+        .slide-body {
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            line-height: 1.65;
+            color: var(--charcoal-light);
+            max-width: min(75ch, 100%);
+        }
+        .slide-body + .slide-body {
+            margin-top: var(--element-gap);
+        }
+
+        /* Emphasis text — larger, used for key statements */
+        .slide-emphasis {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 2.5vw, 2rem);
+            font-weight: 400;
+            line-height: 1.35;
+            color: var(--charcoal);
+            max-width: min(65ch, 100%);
+        }
+        .slide-emphasis em {
+            font-style: italic;
+            color: var(--red);
+        }
+        .slide-emphasis strong {
+            font-weight: 700;
+        }
+
+        /* Blockquotes */
+        .slide-quote {
+            position: relative;
+            padding-left: clamp(1.2rem, 3vw, 2.5rem);
+            max-width: min(70ch, 100%);
+        }
+        .slide-quote::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--red);
+        }
+        .slide-quote p {
+            font-family: var(--font-quote);
+            font-size: var(--quote-size);
+            font-style: italic;
+            line-height: 1.55;
+            color: var(--charcoal);
+        }
+        .slide-quote .attribution {
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            font-style: normal;
+            color: var(--text-muted);
+            margin-top: var(--element-gap);
+            letter-spacing: 0.03em;
+        }
+
+        /* Large centered quote (for quote-dominant slides) */
+        .slide-quote-centered {
+            text-align: center;
+            max-width: min(75ch, 85vw);
+            margin: 0 auto;
+        }
+        .slide-quote-centered .slide-content {
+            align-items: center;
+            max-width: min(75ch, 85vw);
+        }
+        .slide-quote-centered .slide-quote {
+            padding-left: 0;
+            max-width: none;
+        }
+        .slide-quote-centered .slide-quote::before {
+            display: none;
+        }
+        .slide-quote-centered .slide-quote p {
+            font-size: clamp(1rem, 2.2vw, 1.6rem);
+        }
+        /* Decorative quotation mark */
+        .slide-quote-centered .slide-quote::after {
+            content: '\201C';
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 8rem);
+            color: var(--red);
+            opacity: 0.15;
+            position: absolute;
+            top: calc(-1 * clamp(1.5rem, 4vw, 4rem));
+            left: 50%;
+            transform: translateX(-50%);
+            line-height: 1;
+        }
+
+        /* Bullet lists */
+        .slide-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.5rem, 1.2vh, 1rem);
+        }
+        .slide-list li {
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            line-height: 1.55;
+            padding-left: clamp(1rem, 2vw, 1.5rem);
+            position: relative;
+            color: var(--charcoal-light);
+        }
+        .slide-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: clamp(0.4rem, 0.8vw, 0.6rem);
+            width: 6px;
+            height: 6px;
+            background: var(--red);
+            border-radius: 50%;
+        }
+        .slide-list li strong {
+            color: var(--charcoal);
+            font-weight: 700;
+        }
+
+        /* Italic dialogue text */
+        .dialogue {
+            font-family: var(--font-quote);
+            font-style: italic;
+            font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+            line-height: 1.55;
+            color: var(--charcoal);
+        }
+        .dialogue-label {
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: clamp(0.15rem, 0.3vw, 0.3rem);
+            font-style: normal;
+        }
+        .dialogue-block {
+            margin-bottom: var(--element-gap);
+        }
+
+        /* Statement slides — large centered text on cream */
+        .slide-statement .slide-content {
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+        .slide-statement .slide-emphasis {
+            max-width: min(55ch, 80vw);
+            text-align: center;
+        }
+
+        /* ===========================================
+           DECORATIVE ELEMENTS
+           Subtle paper texture and accent details
+           =========================================== */
+        .slide-content-type::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+        .slide-content-type .slide-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Slide number — bottom left, subtle */
+        .slide-number {
+            position: absolute;
+            bottom: clamp(0.75rem, 1.5vw, 1.5rem);
+            left: clamp(1rem, 2vw, 2rem);
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            color: var(--text-muted);
+            opacity: 0.5;
+            z-index: 2;
+        }
+        .slide-section .slide-number,
+        .slide-subsection .slide-number,
+        .slide-title .slide-number {
+            color: var(--text-light);
+            opacity: 0.3;
+        }
+
+        /* ===========================================
+           ANIMATIONS
+           Editorial feel: measured, elegant reveals
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+        .reveal-slow {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity var(--duration-slow) var(--ease-out-expo),
+                        transform var(--duration-slow) var(--ease-out-expo);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity var(--duration-slow) var(--ease-out-expo),
+                        transform var(--duration-slow) var(--ease-out-expo);
+        }
+        .slide.visible .reveal,
+        .slide.visible .reveal-slow,
+        .slide.visible .reveal-scale {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Stagger children */
+        .reveal:nth-child(1) { transition-delay: 0.05s; }
+        .reveal:nth-child(2) { transition-delay: 0.15s; }
+        .reveal:nth-child(3) { transition-delay: 0.25s; }
+        .reveal:nth-child(4) { transition-delay: 0.35s; }
+        .reveal:nth-child(5) { transition-delay: 0.45s; }
+        .reveal:nth-child(6) { transition-delay: 0.55s; }
+
+        .reveal-slow:nth-child(1) { transition-delay: 0.1s; }
+        .reveal-slow:nth-child(2) { transition-delay: 0.25s; }
+        .reveal-slow:nth-child(3) { transition-delay: 0.4s; }
+
+        /* List item stagger */
+        .slide.visible .slide-list li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .slide-list li {
+            opacity: 0;
+            transform: translateX(-15px);
+            transition: opacity 0.5s var(--ease-out-expo),
+                        transform 0.5s var(--ease-out-expo);
+        }
+        .slide-list li:nth-child(1) { transition-delay: 0.15s; }
+        .slide-list li:nth-child(2) { transition-delay: 0.25s; }
+        .slide-list li:nth-child(3) { transition-delay: 0.3s; }
+        .slide-list li:nth-child(4) { transition-delay: 0.4s; }
+        .slide-list li:nth-child(5) { transition-delay: 0.5s; }
+
+        /* Section slide entrance — title fades in from scale */
+        .slide-section .section-title,
+        .slide-subsection .subsection-title {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity var(--duration-slow) var(--ease-out-expo),
+                        transform var(--duration-slow) var(--ease-out-expo);
+        }
+        .slide-section.visible .section-title,
+        .slide-subsection.visible .subsection-title {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Keyboard hint — bottom center, fades away */
+        .keyboard-hint {
+            position: fixed;
+            bottom: clamp(0.5rem, 1.5vw, 1.5rem);
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            color: var(--text-light);
+            opacity: 0.4;
+            z-index: 100;
+            animation: fadeHint 4s ease-in-out forwards;
+            animation-delay: 3s;
+        }
+        @keyframes fadeHint {
+            to { opacity: 0; pointer-events: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation dots -->
+    <nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+
+    <!-- Keyboard hint -->
+    <div class="keyboard-hint">Arrow keys or scroll to navigate</div>
+
+    <!-- ===================================================
+         SLIDE 1: TITLE
+         =================================================== -->
+    <section class="slide slide-title" data-theme="dark">
+        <div class="slide-content">
+            <div class="title-text">
+                <h1 class="reveal">In Tech<br>We Trust.</h1>
+                <p class="subtitle reveal">The god-like authority of technology in the modern age — and what it means to set a wiser course</p>
+                <p class="meta reveal">Rufus Pollock, Sylvie Barbier, and Rosie Bell<br>18 March 2026</p>
+            </div>
+            <div class="title-image reveal-scale">
+                <img src="assets/tech-we-trust-cover.jpg" alt="In Tech We Trust — cover art showing praying hands">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 2: SECTION — The Wisdom Gap
+         =================================================== -->
+    <section class="slide slide-section" data-theme="dark">
+        <div class="slide-content">
+            <div class="section-number reveal">Part One</div>
+            <h2 class="section-title">The Wisdom Gap</h2>
+        </div>
+        <span class="slide-number">2</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 3: Opening statement
+         =================================================== -->
+    <section class="slide slide-content-type slide-statement">
+        <div class="slide-content">
+            <p class="slide-emphasis reveal-slow">Our powers keep outrunning our capacity to use them wisely</p>
+            <p class="slide-body reveal-slow" style="text-align:center; margin-top: var(--content-gap); color: var(--text-muted);">And the gap is accelerating.</p>
+        </div>
+        <span class="slide-number">3</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 4: The Bomb
+         =================================================== -->
+    <section class="slide slide-content-type slide-quote-centered">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal" style="text-align:center;">The Bomb</h3>
+            <div class="slide-quote reveal-slow">
+                <p>"Physicists split the atom without any hesitations the very moment they knew how to do it."</p>
+                <div class="attribution">— Hannah Arendt</div>
+            </div>
+        </div>
+        <span class="slide-number">4</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 5: The Climate Bet
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">The Climate Bet</h3>
+            <p class="slide-body reveal">At the highest levels of climate policy, our plans increasingly rely on <em>future technological breakthroughs</em> that don't exist yet.</p>
+            <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">We're betting civilisation on faith in tech to fix what tech broke.</p>
+        </div>
+        <span class="slide-number">5</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 6: The Experiment on Our Children
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">The Experiment on Our Children</h3>
+            <p class="slide-body reveal">We handed addictive technology to entire populations of children.</p>
+            <p class="slide-body reveal">No experts in the effects on youth mental health existed to consult — because the technology arrived before the expertise.</p>
+        </div>
+        <span class="slide-number">6</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 7: AI — Amodei quote
+         =================================================== -->
+    <section class="slide slide-content-type slide-quote-centered">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal" style="text-align:center;">AI</h3>
+            <div class="slide-quote reveal-slow">
+                <p>"Humanity is about to be handed almost unimaginable power, and it is deeply unclear whether our social, political, and technological systems possess the maturity to wield it."</p>
+                <div class="attribution">— Dario Amodei, CEO of Anthropic</div>
+            </div>
+        </div>
+        <span class="slide-number">7</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 8: The Pattern
+         =================================================== -->
+    <section class="slide slide-content-type slide-statement">
+        <div class="slide-content">
+            <p class="slide-emphasis reveal-slow" style="font-weight: 700;">Unleash first, understand later.</p>
+            <p class="slide-emphasis reveal-slow" style="margin-top: var(--content-gap); opacity: 0.7;">Each time the stakes get higher.</p>
+        </div>
+        <span class="slide-number">8</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 9: SECTION — Why Does This Keep Happening?
+         =================================================== -->
+    <section class="slide slide-section" data-theme="dark">
+        <div class="slide-content">
+            <div class="section-number reveal">Part Two</div>
+            <h2 class="section-title">Why Does This Keep Happening?</h2>
+        </div>
+        <span class="slide-number">9</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 10: SUBSECTION — The Runaway Horse
+         =================================================== -->
+    <section class="slide slide-subsection" data-theme="dark">
+        <div class="slide-content">
+            <h3 class="subsection-title">The Runaway Horse</h3>
+            <p class="subsection-subtitle reveal">Technology: from servant to master</p>
+        </div>
+        <span class="slide-number">10</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 11: The Horse — TNH quote
+         =================================================== -->
+    <section class="slide slide-content-type slide-quote-centered">
+        <div class="slide-content">
+            <div class="slide-quote reveal-slow">
+                <p>"A person is sitting on a horse, galloping very quickly. At a crossroads, a friend shouts, 'Where are you going?' The man says, 'I don't know, ask the horse!'"</p>
+                <div class="attribution">— Thich Nhat Hanh</div>
+            </div>
+        </div>
+        <span class="slide-number">11</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 12: The Comforting Story
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">The Comforting Story</h3>
+            <p class="slide-body reveal">We tell ourselves: a need arises, innovation meets it, rational humans choose what's best.</p>
+            <p class="slide-body reveal">But we've normalised addiction to our smartphones. We "consume" our world through algorithmic feeds that hijack our attention and sell it for profit.</p>
+            <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">We don't question it — because the story says we're choosing freely.</p>
+        </div>
+        <span class="slide-number">12</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 13: The Sorcerer's Apprentice
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">The Sorcerer's Apprentice</h3>
+            <p class="slide-body reveal">We unleash a technology. It creates problems. We unleash <em>more</em> technology to fix those problems. The problems compound.</p>
+            <ul class="slide-list" style="margin-top: var(--element-gap);">
+                <li><strong>Climate:</strong> tech-fuelled destruction of the biosphere → bet on future tech that doesn't exist</li>
+                <li><strong>Information:</strong> social media → algorithmic disinformation → AI fact-checkers → deeper distortion</li>
+            </ul>
+            <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">Each fix creates the next crisis.</p>
+        </div>
+        <span class="slide-number">13</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 14: The Zen Master Visits Google
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">The Zen Master Visits Google</h3>
+            <p class="slide-body reveal">2013. Thich Nhat Hanh is invited to Google headquarters. The conversation turns to addictive apps.</p>
+            <div class="dialogue-block reveal">
+                <p class="dialogue-label">The Zen Master suggests:</p>
+                <p class="dialogue">"Mobile phones could easily have a mindfulness bell — a sound every quarter hour to interrupt the addictive pattern and recall people to themselves."</p>
+            </div>
+            <div class="dialogue-block reveal">
+                <p class="dialogue-label">The engineer objects:</p>
+                <p class="dialogue">"But wouldn't we be imposing something people don't need?"</p>
+            </div>
+        </div>
+        <span class="slide-number">14</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 15: Real Needs and False Needs
+         =================================================== -->
+    <section class="slide slide-content-type slide-quote-centered">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal" style="text-align:center;">Real Needs and False Needs</h3>
+            <div class="slide-quote reveal-slow">
+                <p>"It's not so simple. People's responses can come from real needs or false needs. Hunger can signal a real need to eat. But many people eat to escape their suffering. The same is true with technology. You're often serving sensations to people to conceal their suffering — loneliness, anxiety. You have to help people distinguish."</p>
+                <div class="attribution">— Thich Nhat Hanh</div>
+            </div>
+        </div>
+        <span class="slide-number">15</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 16: The Objection Is the Problem
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">The Objection <em>Is</em> the Problem</h3>
+            <p class="dialogue reveal" style="margin-bottom: var(--content-gap);">"We don't impose — we let people choose freely."</p>
+            <p class="slide-body reveal">But choice is useless without the capacity to choose well.</p>
+            <p class="slide-body reveal">We believe ourselves fully rational and fully agentic — and this belief blinds us to the ways technology distorts our agency.</p>
+        </div>
+        <span class="slide-number">16</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 17: SUBSECTION — It's Worse Than That
+         =================================================== -->
+    <section class="slide slide-subsection" data-theme="dark">
+        <div class="slide-content">
+            <h3 class="subsection-title">It's Worse Than That</h3>
+            <p class="subsection-subtitle reveal">We don't just fail to control technology — we actively <em>worship</em> it.</p>
+        </div>
+        <span class="slide-number">17</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 18: Technology as Surrogate God
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">Technology as Surrogate God</h3>
+            <ul class="slide-list">
+                <li><strong>Mystery and awe:</strong> "There's no discernible difference between the internet and an omniscient being. I don't ask how it works. I just switch it on and trust."</li>
+                <li><strong>Salvation:</strong> cryopreservation, transhumanism — ideas that evolved "from crackpot to merely eccentric"</li>
+                <li><strong>High priests:</strong> tech founders as the most famous, most powerful people in the world — their opinion thought relevant in every matter</li>
+                <li><strong>Blind faith in crisis:</strong> facing existential climate breakdown, our best policy plans assume <em>more</em> tech will save us from tech</li>
+            </ul>
+        </div>
+        <span class="slide-number">18</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 19: The Horse Isn't Just Running Away
+         =================================================== -->
+    <section class="slide slide-content-type slide-statement">
+        <div class="slide-content">
+            <p class="slide-emphasis reveal-slow" style="font-weight: 700;">The horse isn't just running away.</p>
+            <p class="slide-emphasis reveal-slow" style="margin-top: var(--content-gap);"><em>We're worshipping the horse.</em></p>
+        </div>
+        <span class="slide-number">19</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 20: SUBSECTION — What's Underneath
+         =================================================== -->
+    <section class="slide slide-subsection" data-theme="dark">
+        <div class="slide-content">
+            <h3 class="subsection-title">What's Underneath</h3>
+            <p class="subsection-subtitle reveal">The modern cultural paradigm</p>
+        </div>
+        <span class="slide-number">20</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 21: The Paradigm
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">The Paradigm</h3>
+            <p class="slide-body reveal">These aren't just bad habits. They're deep features of how modern culture sees reality:</p>
+            <ul class="slide-list" style="margin-top: var(--element-gap);">
+                <li><strong>Materialism</strong> — reality reduced to what can be measured</li>
+                <li><strong>The myth of progress</strong> — more tech is always better; questioning it is naive</li>
+                <li><strong>Rationalism</strong> — we're rational agents making free choices (so no need for guardrails)</li>
+                <li><strong>Individualism</strong> — separate selves competing for advantage</li>
+                <li><strong>Homo economicus</strong> — the sovereign consumer knows best; any harm is an "externality"</li>
+            </ul>
+        </div>
+        <span class="slide-number">21</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 22: SECTION — The Trap
+         =================================================== -->
+    <section class="slide slide-section" data-theme="dark">
+        <div class="slide-content">
+            <div class="section-number reveal">Part Three</div>
+            <h2 class="section-title">The Trap</h2>
+            <p class="section-subtitle reveal">Why governance alone can't work</p>
+        </div>
+        <span class="slide-number">22</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 23: The Race to the Bottom
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">The Race to the Bottom</h3>
+            <p class="dialogue reveal">"Can't we just regulate better?"</p>
+            <p class="dialogue reveal" style="margin-top: var(--element-gap);">"Should we pause?"</p>
+            <p class="slide-body reveal" style="margin-top: var(--content-gap);">The answer is always the same:</p>
+            <p class="slide-emphasis reveal" style="margin-top: var(--element-gap);"><em>"We can't. If we pause, someone else won't."</em></p>
+        </div>
+        <span class="slide-number">23</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 24: Genghis Khan — Schmachtenberger quote
+         =================================================== -->
+    <section class="slide slide-content-type slide-quote-centered">
+        <div class="slide-content">
+            <div class="slide-quote reveal-slow">
+                <p>"If you had a peaceful civilisation and Genghis Khan wanted that area… your peaceful civilisation was wiped out. The same is true if you want to internalise the cost of carbon: your country gets destroyed by whoever externalises that cost. The thing that has been more successfully dominant, extracted more, grown its violence capability, wins. And that thing plus exponential tech, at planetary boundaries, self-terminates."</p>
+                <div class="attribution">— Daniel Schmachtenberger</div>
+            </div>
+        </div>
+        <span class="slide-number">24</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 25: The Fort
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">The Fort</h3>
+            <p class="slide-body reveal">Imagine defending a fort together.</p>
+            <p class="slide-body reveal">If everyone stays, some may die — but most survive and the enemy is repelled.</p>
+            <p class="slide-body reveal">Anyone who leaves may save themselves — provided others stay behind.</p>
+            <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">But if enough people try to save themselves, the battle is lost and <em>everyone</em> dies.</p>
+        </div>
+        <span class="slide-number">25</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 26: This Is Where We Are
+         =================================================== -->
+    <section class="slide slide-content-type slide-statement">
+        <div class="slide-content">
+            <p class="slide-emphasis reveal-slow" style="font-weight: 700;">AI. Climate. Nuclear weapons.</p>
+            <p class="slide-emphasis reveal-slow" style="margin-top: var(--content-gap);">The fort — at planetary scale.</p>
+        </div>
+        <span class="slide-number">26</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 27: SUBSECTION — The Root
+         =================================================== -->
+    <section class="slide slide-subsection" data-theme="dark">
+        <div class="slide-content">
+            <h3 class="subsection-title">The Root</h3>
+            <p class="subsection-subtitle reveal">A worldview of separateness</p>
+        </div>
+        <span class="slide-number">27</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 28: The Deeper Problem
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">The Deeper Problem</h3>
+            <p class="slide-body reveal">These aren't coordination failures you can engineer your way out of.</p>
+            <p class="slide-body reveal">They're rooted in a worldview that sees reality as fundamentally divided: separate individuals competing for advantage.</p>
+            <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">Every attempt to fix tech governance <em>within</em> this paradigm reproduces the paradigm.</p>
+        </div>
+        <span class="slide-number">28</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 29: The Balinese Water Temples
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">The Balinese Water Temples</h3>
+            <p class="slide-body reveal">For over a thousand years, the <em>Subak</em> irrigation system in Bali has solved what should be an intractable collective action problem.</p>
+        </div>
+        <span class="slide-number">29</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 30: Why Does It Work?
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">Why Does It Work?</h3>
+            <p class="slide-body reveal">It's not just irrigation — it's a network of <em>water temples</em>.</p>
+            <p class="slide-body reveal">The whole system expresses a philosophy (<em>Tri Hita Karana</em>) uniting spirit, the human world, and nature. Rice is a gift from god. Water temple rituals emphasise dependence on the living world.</p>
+            <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">The cooperation didn't come from rational incentive design. It came from <strong>shared meaning, shared identity, shared sense of belonging to something larger</strong>.</p>
+        </div>
+        <span class="slide-number">30</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 31: SECTION — The Takeaway
+         =================================================== -->
+    <section class="slide slide-section" data-theme="dark">
+        <div class="slide-content">
+            <div class="section-number reveal">Part Four</div>
+            <h2 class="section-title">The Takeaway</h2>
+        </div>
+        <span class="slide-number">31</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 32: If You Take Away One Thing
+         =================================================== -->
+    <section class="slide slide-content-type slide-statement">
+        <div class="slide-content">
+            <p class="slide-emphasis reveal-slow">You cannot govern technology wisely without shifting the cultural paradigm that produces our dysfunctional relationship with it.</p>
+            <p class="slide-body reveal-slow" style="text-align:center; margin-top: var(--content-gap); max-width: min(60ch, 80vw);">The attempts to regulate, align, and govern technology will keep failing as long as they operate within the worldview of separate, competing, rational individuals.</p>
+            <p class="slide-emphasis reveal-slow" style="margin-top: var(--content-gap); font-weight: 700;">You can't fix a paradigm problem with paradigm tools.</p>
+        </div>
+        <span class="slide-number">32</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 33: SECTION — A Wiser Path
+         =================================================== -->
+    <section class="slide slide-section" data-theme="dark">
+        <div class="slide-content">
+            <div class="section-number reveal">Part Five</div>
+            <h2 class="section-title">A Wiser Path</h2>
+            <p class="section-subtitle reveal">Sketched</p>
+        </div>
+        <span class="slide-number">33</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 34: Slowness and Spaciousness
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">Slowness and Spaciousness</h3>
+            <p class="slide-emphasis reveal">It's difficult to be wise in a rush.</p>
+            <p class="slide-body reveal" style="margin-top: var(--content-gap);">Imagine a moratorium: six months for philosophers, spiritual leaders, technologists, facilitators to ask together — <em>Do we want this? Do we want it now? How do we contain it?</em></p>
+        </div>
+        <span class="slide-number">34</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 35: A Fuller Account of Human Nature
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">A Fuller Account of Human Nature</h3>
+            <p class="slide-body reveal">Beyond <em>homo economicus</em> — restoring value to intuition, embodied knowing, emotional intelligence, and the subtle inner senses that help us discern what's genuinely good.</p>
+            <p class="slide-emphasis reveal" style="margin-top: var(--content-gap);">These aren't soft extras. They're essential capacities for wise choice-making that our rationalist culture has systematically sidelined.</p>
+        </div>
+        <span class="slide-number">35</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 36: Interbeing
+         =================================================== -->
+    <section class="slide slide-content-type">
+        <div class="slide-content">
+            <h3 class="slide-heading reveal">Interbeing</h3>
+            <div class="slide-quote reveal">
+                <p>"To be is always to inter-be."</p>
+                <div class="attribution">— Thich Nhat Hanh</div>
+            </div>
+            <p class="slide-body reveal" style="margin-top: var(--content-gap);">Nothing exists in isolation. And this contains a simple, devastating insight:</p>
+            <p class="slide-emphasis reveal" style="margin-top: var(--element-gap);"><strong>Nobody wins a competition that ends in shared destruction.</strong></p>
+            <p class="slide-body reveal" style="margin-top: var(--element-gap);">When you perceive identity <em>with</em> each other and the world, there are no externalities. Collective action problems become dissoluble.</p>
+        </div>
+        <span class="slide-number">36</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 37: Closing quote
+         =================================================== -->
+    <section class="slide slide-content-type slide-quote-centered">
+        <div class="slide-content">
+            <div class="slide-quote reveal-slow">
+                <p>"The godlike status of technology has become a vicious circle. The more machines empower us, the more willingly we defer to them — rendering ourselves less capable of resisting technological momentum. Restoring wise relationship with technology first requires transforming our impoverished, computational view of what it means to be human."</p>
+            </div>
+        </div>
+        <span class="slide-number">37</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 38: A Future That Survives (closing)
+         =================================================== -->
+    <section class="slide slide-section" data-theme="dark">
+        <div class="slide-content">
+            <h2 class="section-title" style="font-size: var(--subsection-title-size);">A future society that survives will restore technology as servant to what is most human, most relational, and most conducive to life.</h2>
+        </div>
+        <span class="slide-number">38</span>
+    </section>
+
+    <!-- ===========================================
+         JAVASCRIPT: Slide Presentation Controller
+         =========================================== -->
+    <script>
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.currentSlide = 0;
+                this.isScrolling = false;
+                this.setupIntersectionObserver();
+                this.setupKeyboardNav();
+                this.setupTouchNav();
+                this.setupWheelNav();
+                this.setupProgressBar();
+                this.setupNavDots();
+            }
+
+            /* --- Intersection Observer: trigger .visible class --- */
+            setupIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            const index = Array.from(this.slides).indexOf(entry.target);
+                            this.currentSlide = index;
+                            this.updateProgressBar();
+                            this.updateNavDots();
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                this.slides.forEach(slide => observer.observe(slide));
+            }
+
+            /* --- Keyboard: arrows, space, page up/down --- */
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    switch(e.key) {
+                        case 'ArrowDown':
+                        case 'ArrowRight':
+                        case ' ':
+                        case 'PageDown':
+                            e.preventDefault();
+                            this.goToSlide(this.currentSlide + 1);
+                            break;
+                        case 'ArrowUp':
+                        case 'ArrowLeft':
+                        case 'PageUp':
+                            e.preventDefault();
+                            this.goToSlide(this.currentSlide - 1);
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            this.goToSlide(0);
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            this.goToSlide(this.slides.length - 1);
+                            break;
+                    }
+                });
+            }
+
+            /* --- Touch/swipe for mobile --- */
+            setupTouchNav() {
+                let touchStartY = 0;
+                document.addEventListener('touchstart', (e) => {
+                    touchStartY = e.touches[0].clientY;
+                }, { passive: true });
+                document.addEventListener('touchend', (e) => {
+                    const diff = touchStartY - e.changedTouches[0].clientY;
+                    if (Math.abs(diff) > 50) {
+                        this.goToSlide(this.currentSlide + (diff > 0 ? 1 : -1));
+                    }
+                }, { passive: true });
+            }
+
+            /* --- Mouse wheel with debounce --- */
+            setupWheelNav() {
+                let lastWheel = 0;
+                document.addEventListener('wheel', (e) => {
+                    const now = Date.now();
+                    if (now - lastWheel < 800) return;
+                    lastWheel = now;
+                    if (Math.abs(e.deltaY) > 30) {
+                        this.goToSlide(this.currentSlide + (e.deltaY > 0 ? 1 : -1));
+                    }
+                }, { passive: true });
+            }
+
+            /* --- Navigate to slide --- */
+            goToSlide(index) {
+                if (index < 0 || index >= this.slides.length) return;
+                this.currentSlide = index;
+                this.slides[index].scrollIntoView({ behavior: 'smooth' });
+                this.updateProgressBar();
+                this.updateNavDots();
+            }
+
+            /* --- Progress bar --- */
+            setupProgressBar() {
+                this.progressBar = document.getElementById('progressBar');
+                this.updateProgressBar();
+            }
+            updateProgressBar() {
+                if (!this.progressBar) return;
+                const progress = ((this.currentSlide + 1) / this.slides.length) * 100;
+                this.progressBar.style.width = progress + '%';
+            }
+
+            /* --- Navigation dots --- */
+            setupNavDots() {
+                const container = document.getElementById('navDots');
+                if (!container) return;
+                this.slides.forEach((slide, i) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('nav-dot');
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    dot.addEventListener('click', () => this.goToSlide(i));
+                    container.appendChild(dot);
+                });
+                this.navDotElements = container.querySelectorAll('.nav-dot');
+                this.updateNavDots();
+            }
+            updateNavDots() {
+                if (!this.navDotElements) return;
+                this.navDotElements.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentSlide);
+                    /* Make dots visible on dark slides */
+                    const slide = this.slides[i === this.currentSlide ? this.currentSlide : i];
+                    const currentTheme = this.slides[this.currentSlide]?.dataset.theme;
+                    dot.classList.toggle('on-dark', currentTheme === 'dark');
+                });
+                /* Update all dots based on current slide theme */
+                const isDark = this.slides[this.currentSlide]?.dataset.theme === 'dark';
+                this.navDotElements.forEach(dot => {
+                    dot.classList.toggle('on-dark', isDark);
+                });
+            }
+        }
+
+        /* Initialize on DOM ready */
+        document.addEventListener('DOMContentLoaded', () => {
+            new SlidePresentation();
+        });
+    </script>
+
+</body>
+</html>
