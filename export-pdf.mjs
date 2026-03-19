@@ -4,7 +4,7 @@ import { resolve } from 'path';
 const WIDTH = 1440;
 const HEIGHT = 1080;
 const SLIDE_COUNT = 38;
-const OUTPUT = 'slides.pdf';
+const OUTPUT = 'in-tech-we-trust-presentation-2026-03-18.pdf';
 
 async function main() {
   const browser = await chromium.launch();
@@ -12,7 +12,7 @@ async function main() {
     viewport: { width: WIDTH, height: HEIGHT },
   });
 
-  const filePath = resolve('slides.html');
+  const filePath = resolve('in-tech-we-trust-presentation-2026-03-18.html');
   await page.goto(`file://${filePath}`, { waitUntil: 'networkidle' });
 
   // Wait for fonts to load

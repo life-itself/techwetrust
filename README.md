@@ -13,11 +13,11 @@ This essay explores our late modern relationship with technology, and asks what 
 
 ## Slides
 
-The presentation slides are built as a single self-contained HTML file (`slides.html`) with all CSS and JS inline. Images are in `assets/slides/`.
+The presentation slides are built as a single self-contained HTML file (`in-tech-we-trust-presentation-2026-03-18.html`) with all CSS and JS inline. Images are in `assets/slides/`.
 
-- **View**: open `slides.html` in a browser. Navigate with arrow keys, space, or scroll.
-- **Edit content**: edit `slides.md` (the source of truth for slide content), then update `slides.html` to match.
-- **Edit styling**: edit the CSS variables in `:root` at the top of `slides.html`.
+- **View**: open `in-tech-we-trust-presentation-2026-03-18.html` in a browser. Navigate with arrow keys, space, or scroll.
+- **Edit content**: edit `in-tech-we-trust-presentation-2026-03-18.md` (the source of truth for slide content), then update the HTML file to match.
+- **Edit styling**: edit the CSS variables in `:root` at the top of the HTML file.
 
 ### Exporting to PDF
 
@@ -32,7 +32,7 @@ npx playwright install chromium
 node export-pdf.mjs
 ```
 
-This produces `slides.pdf`.
+This produces `in-tech-we-trust-presentation-2026-03-18.pdf`.
 
 ### Image credits
 
