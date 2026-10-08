@@ -1,5 +1,17 @@
 # In Tech we Trust
 
+> **Deprecated — migrated on 8 October 2026.** This repository is retained as a historical archive and is no longer maintained. Use the following repositories for current content and future edits:
+>
+> - **Paper, launch copy and publication/event links:** [life-itself/2rbook — tech](https://github.com/life-itself/2rbook/tree/main/tech)
+> - **Presentations, slide sources, PDFs and assets:** [life-itself/2rbook — tech/slides](https://github.com/life-itself/2rbook/tree/main/tech/slides)
+> - **Promotional copy and sharing carousel:** [life-itself/content — techwetrust](https://github.com/life-itself/content/tree/main/techwetrust)
+>
+> The migration preserved the paper text and supporting material. Original files below remain for reference; Git history was not imported into the destination repositories. This GitHub repository is archived (read-only).
+
+---
+
+## Historical repository documentation
+
 In Tech We Trust paper, research and talks.
 
 This essay explores our late modern relationship with technology, and asks what kind of inner shift might help a future society to find a wiser path.
